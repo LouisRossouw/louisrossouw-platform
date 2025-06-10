@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t8sm%$je*6k*p9iu$m1wj#3dg^3(yp50ub_o1v_0fp^$!7=lqn'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+DEV = True if os.getenv('APP_ENV') == "dev" else False
+DEBUG = True if DEV else False
 
 ALLOWED_HOSTS = ["10.0.0.113"]
 
@@ -37,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -116,8 +124,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    str(BASE_DIR) + "/main/static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.AdminRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer'
+    ],
+}
+
+BUSSINESS_NAME = "LouisRossouw Platform"
+# SERVER_URI = "http://127.0.0.1:8000" if DEV else "www.todo.com"
+# WEB_CLIENT_URI = "http://localhost:5173" if DEV else "www.todo.com"
+
+
+print("\n--")
+print("🚀 Starting Server:\n")
+print('🔫 Env:', DEV)
+print('👾 BUSSINESS_NAME:', BUSSINESS_NAME)
+# print("SERVER_URI:", SERVER_URI)
+# print("WEB_CLIENT_URI:", WEB_CLIENT_URI)
+print("\n--\n")
