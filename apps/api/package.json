@@ -1,0 +1,12 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "scripts": {
+      "dev": "python manage.py runserver 0.0.0.0:8000",
+      "build": "echo 'No build step for Django'",
+      "lint": "echo 'No linting for Django'",
+      "makemigrations": "python manage.py makemigrations",
+      "migrate": "python manage.py migrate"
+    }
+  }
+  
