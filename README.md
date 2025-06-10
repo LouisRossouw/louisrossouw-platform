@@ -8,17 +8,7 @@
 
 To self host on a VPS with coolify under sub domains, --- No idea how well it will work, but there should be little to no traffic to these apps.
 
-# shadcn/ui monorepo template
-
-This template is for creating a monorepo with shadcn/ui.
-
-## Usage
-
-```bash
-pnpm dlx shadcn@latest init
-```
-
-## Adding components
+## Adding Shadcn/ui components
 
 To add components to your app, run the following command at the root of your `web` app:
 
