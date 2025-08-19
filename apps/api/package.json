@@ -2,7 +2,7 @@
     "name": "api",
     "version": "1.0.0",
     "scripts": {
-      "dev": ".\\venv\\Scripts\\python.exe manage.py runserver 0.0.0.0:8000",
+      "dev": ".\\venv\\Scripts\\python.exe manage.py runserver",
       "build": "echo 'No build step for Django'",
       "lint": "echo 'No linting for Django'",
       "makemigrations": "python manage.py makemigrations",
